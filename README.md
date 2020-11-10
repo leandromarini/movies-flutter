@@ -20,7 +20,7 @@ Tutorial de criação deste app: [clique aqui](https://kleberandrade.medium.com/
 
 ## Desafio para aula
 
-*   [ ] Adicionar um [ícone](https://pub.dev/packages/flutter_launcher_icons) e uma [tela de splash](https://pub.dev/packages/custom_splash) para o aplicativo;
+*   [X] Adicionar um [ícone](https://pub.dev/packages/flutter_launcher_icons) e uma [tela de splash](https://pub.dev/packages/custom_splash) para o aplicativo;
 *   [ ] Na MovieDetailPage adicionar pelo menos 2 novas informaçoes;
 *   [ ] Criar um [IconButton na AppBar](https://medium.com/flutterpub/playing-with-appbar-in-flutter-3a8abd9b982a) que altere o crossAxisCount do GridView entre 2 e 3. Nao se esqueçam do setState;
 *   [ ] Trocar a lógica do ScrollController por [InfiniteScrollPagination](https://pub.dev/packages/infinite_scroll_pagination);
