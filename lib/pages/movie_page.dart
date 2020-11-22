@@ -14,7 +14,9 @@ class MoviePage extends StatefulWidget {
 class _MoviePageState extends State<MoviePage> {
   final _controller = MovieController();
   final _scrollController = ScrollController();
+
   int lastPage = 1;
+  int moviesPerRow = 2;
 
   @override
   void initState() {
@@ -60,12 +62,23 @@ class _MoviePageState extends State<MoviePage> {
     return AppBar(
       title: Text(kAppName),
       actions: [
-        IconButton(
-          icon: Icon(Icons.refresh),
-          onPressed: _initialize,
-        ),
+        _buildIconButton(Icon(Icons.dashboard), _changeGridView),
+        _buildIconButton(Icon(Icons.refresh), _initialize),
       ],
     );
+  }
+
+  _buildIconButton(Icon icon, Function function) {
+    return IconButton(
+      icon: icon,
+      onPressed: function,
+    );
+  }
+
+  _changeGridView() {
+    setState(() {
+      moviesPerRow == 2 ? moviesPerRow = 3 : moviesPerRow = 2;
+    });
   }
 
   _buildMovieGrid() {
@@ -82,7 +95,7 @@ class _MoviePageState extends State<MoviePage> {
       padding: const EdgeInsets.all(2.0),
       itemCount: _controller.moviesCount,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: moviesPerRow,
         mainAxisSpacing: 2,
         crossAxisSpacing: 2,
         childAspectRatio: 0.65,
