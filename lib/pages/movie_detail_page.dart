@@ -5,6 +5,8 @@ import '../widgets/centered_message.dart';
 import '../widgets/centered_progress.dart';
 import '../widgets/chip_date.dart';
 import '../widgets/rate.dart';
+import '../widgets/runtime.dart';
+import '../widgets/genres.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final int movieId;
@@ -70,7 +72,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 
   _buildOverview() {
     return Container(
-      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
       child: Text(
         _controller.movieDetail.overview,
         textAlign: TextAlign.justify,
@@ -80,15 +82,21 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
 
   _buildStatus() {
-    return Container(
-      padding: const EdgeInsets.all(10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Rate(_controller.movieDetail.voteAverage),
-          ChipDate(date: _controller.movieDetail.releaseDate),
-        ],
-      ),
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Rate(_controller.movieDetail.voteAverage),
+            Runtime(_controller.movieDetail.runtime),
+            ChipDate(date: _controller.movieDetail.releaseDate),
+          ],
+        ),
+        Container(
+          padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+          child: Genres(_controller.movieDetail.genres),
+        ),
+      ],
     );
   }
 
