@@ -64,7 +64,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       children: [
         _buildCover(),
         Container(
-          margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+          margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
           child: Column(
             children: [
               _buildStatus(),
