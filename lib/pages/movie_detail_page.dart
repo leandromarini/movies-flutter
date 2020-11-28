@@ -68,9 +68,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
           child: Column(
             children: [
               _buildStatus(),
-              _buildVerticalSpace(),
               _buildGenresList(),
-              _buildVerticalSpace(height: 15),
+              _buildVerticalSpace(),
               _buildOverview(),
             ],
           ),
