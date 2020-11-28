@@ -6,7 +6,6 @@ import '../widgets/centered_progress.dart';
 import '../widgets/chip_date.dart';
 import '../widgets/rate.dart';
 import '../widgets/runtime.dart';
-import '../widgets/genres.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final int movieId;
@@ -64,15 +63,28 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     return ListView(
       children: [
         _buildCover(),
-        _buildStatus(),
-        _buildOverview(),
+        Container(
+          margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+          child: Column(
+            children: [
+              _buildStatus(),
+              _buildVerticalSpace(),
+              _buildGenresList(),
+              _buildVerticalSpace(height: 15),
+              _buildOverview(),
+            ],
+          ),
+        )
       ],
     );
   }
 
+  _buildVerticalSpace({double height = 10.0}) {
+    return SizedBox(height: height);
+  }
+
   _buildOverview() {
     return Container(
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
       child: Text(
         _controller.movieDetail.overview,
         textAlign: TextAlign.justify,
@@ -85,18 +97,35 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Rate(_controller.movieDetail.voteAverage),
             Runtime(_controller.movieDetail.runtime),
             ChipDate(date: _controller.movieDetail.releaseDate),
           ],
         ),
-        Container(
-          padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-          child: Genres(_controller.movieDetail.genres),
-        ),
       ],
+    );
+  }
+
+  _buildGenresList() {
+    return Container(
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        children: <Widget>[
+          for (var genre in _controller.movieDetail.genres)
+            Container(
+              child: Chip(
+                label: Text(
+                  '${genre.name}',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Colors.red.withOpacity(0.9),
+              ),
+              margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+            ),
+        ],
+      ),
     );
   }
 

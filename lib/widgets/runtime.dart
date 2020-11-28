@@ -17,11 +17,9 @@ class Runtime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        runtimeToHourFormat(runtime),
-        style: TextStyle(fontSize: 18),
-      ),
+    return Text(
+      runtimeToHourFormat(runtime),
+      style: TextStyle(fontSize: 18),
     );
   }
 }
