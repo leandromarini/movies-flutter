@@ -6,6 +6,7 @@ import '../widgets/centered_progress.dart';
 import '../widgets/chip_date.dart';
 import '../widgets/rate.dart';
 import '../widgets/runtime.dart';
+import '../widgets/chip_genre.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final int movieId;
@@ -46,9 +47,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
 
   _buildAppBar() {
-    return AppBar(
-      title: Text(_controller.movieDetail?.title ?? ''),
-    );
+    return AppBar();
   }
 
   _buildMovieDetail() {
@@ -63,18 +62,30 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     return ListView(
       children: [
         _buildCover(),
+        _buildTitle(),
         Container(
           margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
           child: Column(
             children: [
               _buildStatus(),
-              _buildGenresList(),
+              _buildGenres(),
               _buildVerticalSpace(),
               _buildOverview(),
             ],
           ),
         )
       ],
+    );
+  }
+
+  _buildTitle() {
+    return Container(
+      child: Text(
+        _controller.movieDetail.title,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      padding: EdgeInsets.all(10),
     );
   }
 
@@ -89,6 +100,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
         textAlign: TextAlign.justify,
         style: Theme.of(context).textTheme.bodyText2,
       ),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
     );
   }
 
@@ -107,24 +119,12 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     );
   }
 
-  _buildGenresList() {
-    return Container(
-      child: Wrap(
-        alignment: WrapAlignment.center,
-        children: <Widget>[
-          for (var genre in _controller.movieDetail.genres)
-            Container(
-              child: Chip(
-                label: Text(
-                  '${genre.name}',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                backgroundColor: Colors.red.withOpacity(0.9),
-              ),
-              margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
-            ),
-        ],
-      ),
+  _buildGenres() {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      children: <Widget>[
+        for (var genre in _controller.movieDetail.genres) ChipGenre(genre.name)
+      ],
     );
   }
 
