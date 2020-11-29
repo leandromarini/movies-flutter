@@ -12,6 +12,7 @@ dependencies:
   intl: ^0.16.1
   flutter_launcher_icons: ^0.8.1
   custom_splash: ^0.0.2
+  fancy_shimmer_image: ^1.2.0
 
 flutter_icons:
   android: "launcher_icon"

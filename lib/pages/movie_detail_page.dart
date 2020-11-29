@@ -123,7 +123,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     return Wrap(
       alignment: WrapAlignment.center,
       children: <Widget>[
-        for (var genre in _controller.movieDetail.genres) ChipGenre(genre.name)
+        for (var genre in _controller.movieDetail.genres)
+          Container(
+            child: ChipGenre(genre.name),
+            margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+          )
       ],
     );
   }

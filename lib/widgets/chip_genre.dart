@@ -7,15 +7,12 @@ class ChipGenre extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Chip(
-        label: Text(
-          genre,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.red.withOpacity(0.9),
+    return Chip(
+      label: Text(
+        genre,
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
-      margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+      backgroundColor: Colors.red.withOpacity(0.9),
     );
   }
 }
