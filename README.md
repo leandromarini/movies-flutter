@@ -24,7 +24,7 @@ Tutorial de criação deste app: [clique aqui](https://kleberandrade.medium.com/
 *   [X] Na MovieDetailPage adicionar pelo menos 2 novas informaçoes;
 *   [X] Criar um [IconButton na AppBar](https://medium.com/flutterpub/playing-with-appbar-in-flutter-3a8abd9b982a) que altere o crossAxisCount do GridView entre 2 e 3. Nao se esqueçam do setState;
 *   [ ] Trocar a lógica do ScrollController por [InfiniteScrollPagination](https://pub.dev/packages/infinite_scroll_pagination);
-*   [ ] Utilizar [FancyShimmerImage](https://pub.dev/packages/fancy_shimmer_image) para os posters (MoviePage) e banners (MovieDetailPage);
+*   [X] Utilizar [FancyShimmerImage](https://pub.dev/packages/fancy_shimmer_image) para os posters (MoviePage) e banners (MovieDetailPage);
 
 ## Licença
 

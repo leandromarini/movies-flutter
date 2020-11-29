@@ -1,3 +1,4 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 
 import '../controllers/movie_detail_controller.dart';
@@ -41,13 +42,9 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: AppBar(),
       body: _buildMovieDetail(),
     );
-  }
-
-  _buildAppBar() {
-    return AppBar();
   }
 
   _buildMovieDetail() {
@@ -78,6 +75,15 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     );
   }
 
+  _buildCover() {
+    return FancyShimmerImage(
+      imageUrl:
+          'https://image.tmdb.org/t/p/w500${_controller.movieDetail.backdropPath}',
+      boxFit: BoxFit.contain,
+      height: MediaQuery.of(context).size.height * 0.29,
+    );
+  }
+
   _buildTitle() {
     return Container(
       child: Text(
@@ -86,21 +92,6 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
       padding: EdgeInsets.all(10),
-    );
-  }
-
-  _buildVerticalSpace({double height = 10.0}) {
-    return SizedBox(height: height);
-  }
-
-  _buildOverview() {
-    return Container(
-      child: Text(
-        _controller.movieDetail.overview,
-        textAlign: TextAlign.justify,
-        style: Theme.of(context).textTheme.bodyText2,
-      ),
-      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
     );
   }
 
@@ -132,9 +123,18 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     );
   }
 
-  _buildCover() {
-    return Image.network(
-      'https://image.tmdb.org/t/p/w500${_controller.movieDetail.backdropPath}',
+  _buildVerticalSpace({double height = 10.0}) {
+    return SizedBox(height: height);
+  }
+
+  _buildOverview() {
+    return Container(
+      child: Text(
+        _controller.movieDetail.overview,
+        textAlign: TextAlign.justify,
+        style: Theme.of(context).textTheme.bodyText2,
+      ),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
     );
   }
 }

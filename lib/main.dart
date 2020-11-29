@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'core/constants.dart';
 import 'core/theme_app.dart';
 import 'pages/movie_page.dart';
 import 'package:custom_splash/custom_splash.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(new MyApp());
 }
 
 class MyApp extends StatelessWidget {
