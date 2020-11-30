@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: kThemeApp,
       home: CustomSplash(
         imagePath: 'assets/images/splash_screen.png',
-        backGroundColor: kThemeApp.backgroundColor,
+        backGroundColor: Colors.black,
         duration: 3000,
         home: MoviePage(),
       ),

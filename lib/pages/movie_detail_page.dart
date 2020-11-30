@@ -66,7 +66,6 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
             children: [
               _buildStatus(),
               _buildGenres(),
-              _buildVerticalSpace(),
               _buildOverview(),
             ],
           ),
@@ -111,20 +110,19 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
 
   _buildGenres() {
-    return Wrap(
-      alignment: WrapAlignment.center,
-      children: <Widget>[
-        for (var genre in _controller.movieDetail.genres)
-          Container(
-            child: ChipGenre(genre.name),
-            margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
-          )
-      ],
+    return Container(
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        children: <Widget>[
+          for (var genre in _controller.movieDetail.genres)
+            Container(
+              child: ChipGenre(genre.name),
+              margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+            )
+        ],
+      ),
+      margin: EdgeInsets.only(bottom: 10),
     );
-  }
-
-  _buildVerticalSpace({double height = 10.0}) {
-    return SizedBox(height: height);
   }
 
   _buildOverview() {
